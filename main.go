@@ -3,8 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-
-	"github.com/MwaitforitOsama/TodoApp/application"
 )
 
 func main() {
