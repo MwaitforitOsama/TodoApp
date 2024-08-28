@@ -15,14 +15,16 @@ func loadRoutes() *chi.Mux {
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	})
+	router.Route("/todo", loadTodoRoutes)
 	return router
 }
 
 func loadTodoRoutes(router chi.Router) {
 	todoHandler := &handler.Todo()
 	router.Post("/", todoHandler.Create)
-	router.Get("/", todoHandler.Create)
-	router.Get("/{id}", todoHandler.Create)
-	router.Delete("/{id}", todoHandler.Create)
+	router.Get("/", todoHandler.List)
+	router.Get("/{id}", todoHandler.GetByID)
+	router.Put("/{id}", todoHandler.UpdateByID)
+	router.Delete("/{id}", todoHandler.DeleteByID)
 
 }
