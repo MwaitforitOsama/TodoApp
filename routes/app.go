@@ -15,8 +15,9 @@ type App struct {
 }
 
 func New() *App {
+	router := loadRoutes()
 	app := &App{
-		router: loadRoutes(),
+		router: router,
 	}
 	return app
 }
@@ -27,10 +28,15 @@ func (a *App) Start(ctx context.Context) error {
 		Handler: a.router,
 	}
 
+	fmt.Println("Starting server on :3000")
+	fmt.Println(server.Handler)
 	err := server.ListenAndServe()
 	if err != nil {
-		return fmt.Errorf("Error : %w", err)
+		fmt.Printf("Server failed: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
+
+	fmt.Println("Server is running")
 	return nil
 }
 

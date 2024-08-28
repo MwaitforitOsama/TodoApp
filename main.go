@@ -18,7 +18,7 @@ func init() {
 }
 
 func main() {
-	app := &routes.App{}
+	app := routes.New()
 
 	app.InitializeDB()
 	defer app.Db.Close()
