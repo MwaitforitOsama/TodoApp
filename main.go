@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+
+	"github.com/mwaitforitosama/TodoApp/routes"
 )
 
 func main() {
-	app := application.New()
+	app := routes.New()
 
 	err := app.Start(context.TODO())
 	if err != nil {
