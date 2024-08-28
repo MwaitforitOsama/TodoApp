@@ -3,9 +3,9 @@ package routes
 import (
 	"net/http"
 
-	"github.com/MwaitforitOsama/TodoApp/handler"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/mwaitforitosama/TodoApp/handler"
 )
 
 func loadRoutes() *chi.Mux {
@@ -20,7 +20,7 @@ func loadRoutes() *chi.Mux {
 }
 
 func loadTodoRoutes(router chi.Router) {
-	todoHandler := &handler.Todo()
+	todoHandler := &handler.Todo{}
 	router.Post("/", todoHandler.Create)
 	router.Get("/", todoHandler.List)
 	router.Get("/{id}", todoHandler.GetByID)
